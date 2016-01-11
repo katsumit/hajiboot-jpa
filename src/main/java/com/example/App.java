@@ -16,10 +16,10 @@ import com.example.repository.CustomerRepository;
 @EnableAutoConfiguration
 @ComponentScan
 public class App implements CommandLineRunner {
-	
+
 	@Autowired
 	CustomerRepository customerRepository;
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(App.class);
 	}
@@ -29,8 +29,8 @@ public class App implements CommandLineRunner {
 		// データ追加
 		Customer created = customerRepository.save(new Customer(null, "秀敏", "出木杉"));
 		System.out.println(created + " is created!");
-		
+
 		// データ表示
-		customerRepository.findAll().forEach(System.out::println);
+		customerRepository.findAllOrderByName().forEach(System.out::println);
 	}
 }
